@@ -52,7 +52,7 @@ def visualize_predicted_demand(shapefile_path, predicted_demand):
     # Assuming the shapefile has a column 'zone_id' or 'LocationID' for taxi zones
     if "LocationID" not in gdf.columns:
         raise ValueError(
-            "Shapefile must contain a 'LocationID' column to match taxi zones."
+            "Shapefile must contain a 'LocationID' column to match bike zones."
         )
 
     # Add a new column for predicted rides, defaulting to 0 if no prediction is available
@@ -71,7 +71,7 @@ def visualize_predicted_demand(shapefile_path, predicted_demand):
     )
 
     # Add title and labels
-    ax.set_title("Predicted NYC Taxi Rides by Zone", fontsize=16)
+    ax.set_title("Predicted NYC Bike Rides by Zone", fontsize=16)
     ax.set_axis_off()  # Turn off axis for a cleaner map
 
     # Show the plot
@@ -265,12 +265,9 @@ with st.spinner(text="Computing model predictions"):
     print(predictions)
 
 
-shapefile_path = DATA_DIR / "taxi_zones" / "taxi_zones.shp"
+shapefile_path =  "src/bike_zones/citi_bike_stations.shp"
 
 with st.spinner(text="Plot predicted rides demand"):
-    st.dataframe(
-        predictions.sort_values("predicted_demand", ascending=False).head(10)
-    )
     predictions_df = visualize_predicted_demand(
         shapefile_path, predictions["predicted_demand"]
     )
@@ -304,11 +301,11 @@ with st.spinner(text="Plot predicted rides demand"):
     st.sidebar.write("Finished plotting taxi rides demand")
     progress_bar.progress(5 / N_STEPS)
 
-st.dataframe(predictions.sort_values("predicted_demand", ascending=False).head(10))
-top10 = (
-    predictions.sort_values("predicted_demand", ascending=False).head(10).index.tolist()
+st.dataframe(predictions.sort_values("predicted_demand", ascending=False).head(5))
+top5 = (
+    predictions.sort_values("predicted_demand", ascending=False).head(5).index.tolist()
 )
-for location_id in top10:
+for location_id in top5:
     fig = plot_aggregated_time_series(
         features=features,
         targets=predictions["predicted_demand"],
