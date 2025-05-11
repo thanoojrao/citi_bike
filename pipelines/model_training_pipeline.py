@@ -36,7 +36,7 @@ print(f"The previous MAE is {metric['test_mae']:.4f}")
 
 if test_mae < metric.get("test_mae"):
     print(f"Registering new model")
-    model_path = config.MODELS_DIR / "lgb_model.pkl"
+    model_path = f'{config.MODELS_DIR}\lgb_model.pkl'
     joblib.dump(pipeline, model_path)
 
     input_schema = Schema(features)
