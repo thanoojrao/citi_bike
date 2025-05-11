@@ -268,6 +268,9 @@ with st.spinner(text="Computing model predictions"):
 shapefile_path = DATA_DIR / "taxi_zones" / "taxi_zones.shp"
 
 with st.spinner(text="Plot predicted rides demand"):
+    st.dataframe(
+        predictions.sort_values("predicted_demand", ascending=False).head(10)
+    )
     predictions_df = visualize_predicted_demand(
         shapefile_path, predictions["predicted_demand"]
     )
