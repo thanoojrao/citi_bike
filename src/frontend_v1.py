@@ -2,6 +2,8 @@ import os
 import sys
 
 sys.path.append(os.path.abspath(os.path.join(os.getcwd(), "..")))
+repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
+sys.path.insert(0, repo_root)
 
 import zipfile
 from datetime import datetime
