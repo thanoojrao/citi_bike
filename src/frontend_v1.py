@@ -265,7 +265,7 @@ with st.spinner(text="Computing model predictions"):
     print(predictions)
 
 
-shapefile_path = DATA_DIR / "taxi_zones" / "taxi_stations.shp"
+shapefile_path = DATA_DIR / "taxi_zones" / "taxi_zones.shp"
 
 with st.spinner(text="Plot predicted rides demand"):
     predictions_df = visualize_predicted_demand(
