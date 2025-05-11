@@ -268,9 +268,9 @@ with st.spinner(text="Computing model predictions"):
 shapefile_path = DATA_DIR / "taxi_zones" / "taxi_zones.shp"
 
 with st.spinner(text="Plot predicted rides demand"):
-    # predictions_df = visualize_predicted_demand(
-    #     shapefile_path, predictions["predicted_demand"]
-    # )
+    predictions_df = visualize_predicted_demand(
+        shapefile_path, predictions["predicted_demand"]
+    )
     st.subheader("Taxi Ride Predictions Map")
     map_obj = create_taxi_map(shapefile_path, predictions)
 
