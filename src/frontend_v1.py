@@ -233,7 +233,7 @@ def load_shape_data_file(
 # st.set_page_config(layout="wide")
 
 current_date = pd.Timestamp.now(tz="Etc/UTC")
-st.title(f"New York Yellow Taxi Cab Demand Next Hour")
+st.title(f"New York Citi Bike Demand Prediction")
 st.header(f'{current_date.strftime("%Y-%m-%d %H:%M:%S")}')
 
 progress_bar = st.sidebar.header("Working Progress")
@@ -271,7 +271,7 @@ with st.spinner(text="Plot predicted rides demand"):
     predictions_df = visualize_predicted_demand(
         shapefile_path, predictions["predicted_demand"]
     )
-    st.subheader("Taxi Ride Predictions Map")
+    st.subheader("Bike Ride Predictions Map")
     map_obj = create_taxi_map(shapefile_path, predictions)
 
     # Display the map
