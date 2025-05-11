@@ -271,12 +271,12 @@ with st.spinner(text="Plot predicted rides demand"):
     predictions_df = visualize_predicted_demand(
         shapefile_path, predictions["predicted_demand"]
     )
-    st.subheader("Taxi Ride Predictions Map")
-    map_obj = create_taxi_map(shapefile_path, predictions)
+    # st.subheader("Taxi Ride Predictions Map")
+    # map_obj = create_taxi_map(shapefile_path, predictions)
 
     # Display the map
-    if st.session_state.map_created:
-        st_folium(st.session_state.map_obj, width=800, height=600, returned_objects=[])
+    # if st.session_state.map_created:
+    #     st_folium(st.session_state.map_obj, width=800, height=600, returned_objects=[])
 
     # Display data statistics
     st.subheader("Prediction Statistics")
